@@ -1,0 +1,1 @@
+var e=``+new URL(`Pool-jdz5Y8AB.svg`,import.meta.url).href;export{e as default};

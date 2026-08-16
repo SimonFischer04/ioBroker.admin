@@ -1,0 +1,1 @@
+import{r as e}from"./rolldown-runtime-C0FnF6B9.js";var t=e({default:()=>n}),n=``+new URL(`user8-BOYrpMoH.svg`,import.meta.url).href;export{t as n,n as t};

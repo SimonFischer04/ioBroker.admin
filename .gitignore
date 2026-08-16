@@ -10,17 +10,15 @@ admin/i18n/*/flat.txt
 admin/i18n/flat.txt
 admin/words.js
 .vscode
-**/build
+/src-admin/build
 **/src/public_aes
 **/src/public/js/adapter-settings-aes.js
 testSentry.bat
-**/adminWww/
 
 # ioBroker dev-server
 .dev-server/
 
 build-backend
-/admin/custom/
 README.md
 
 #ignore .commitinfo created by ioBroker release script

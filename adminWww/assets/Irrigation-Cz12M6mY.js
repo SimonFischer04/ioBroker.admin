@@ -1,0 +1,1 @@
+var e=``+new URL(`Irrigation-DyPFlYm5.svg`,import.meta.url).href;export{e as default};

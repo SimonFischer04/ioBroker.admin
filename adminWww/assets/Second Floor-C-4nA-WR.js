@@ -1,0 +1,1 @@
+var e=``+new URL(`Second Floor-G72pwGsQ.svg`,import.meta.url).href;export{e as default};

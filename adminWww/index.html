@@ -1,0 +1,146 @@
+<!doctype html>
+<html
+    lang="en"
+    translate="no"
+>
+    <head>
+        <meta charset="utf-8" />
+        <link
+            rel="icon"
+            href="favicon.ico"
+        />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=no"
+        />
+        <meta
+            name="theme-color"
+            content="#000000"
+        />
+        <meta
+            name="description"
+            content="admin - ioBroker"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="logo192.png"
+        />
+        <link
+            rel="stylesheet"
+            href="css/leaflet.css"
+        />
+        <link
+            rel="manifest"
+            href="manifest.json"
+            crossorigin="use-credentials"
+        />
+        <script type="text/javascript" onerror="setTimeout(function(){window.location.reload()}, 5000)" src="./lib/js/socket.io.js"></script>
+        <title>Admin</title>
+
+        <script>
+            window.loginHideLogo = '@@loginHideLogo@@';
+            window.loginMotto = '@@loginMotto@@';
+            window.login = '@@auth@@';
+            window.loginLogo = '@@loginLogo@@';
+            window.loginLink = '@@loginLink@@';
+            window.loginTitle = '@@loginTitle@@';
+            window.loginBackgroundColor = '@@loginBackgroundColor@@';
+            window.loginBackgroundImage = '@@loginBackgroundImage@@';
+
+            window.vendorPrefix = '@@vendorPrefix@@';
+            window.disableDataReporting = '@@disableDataReporting@@';
+
+            window.loadingBackgroundColor = '@@loadingBackgroundColor@@';
+            window.loadingBackgroundImage = '@@loadingBackgroundImage@@';
+            window.loadingHideLogo = '@@loadingHideLogo@@';
+            window.ssoActive = '@@ssoActive@@';
+            window.socketPath = '@@socketPath@@';
+        </script>
+        <style>
+            .root {
+                background-color: rgba(255, 255, 255, 0.87);
+                border-radius: 10px;
+            }
+            .unsupported {
+                width: 200px;
+                background-color: #aaaaaa;
+                margin: auto;
+                margin-top: 3rem;
+                padding: 10px;
+                line-height: 25px;
+                border-radius: 4px;
+                text-align: center;
+            }
+            .leaflet-container {
+                height: 400px;
+                width: 100%;
+            }
+        </style>
+        <script>
+            setTimeout(() => {
+                const body = document.body;
+                if (window.location.search.includes('?login')) {
+                    if (window.vendorPrefix === 'HA') {
+                        body.style.backgroundColor = '#000000';
+                    } else if (
+                        window.loginBackgroundColor &&
+                        !window.loginBackgroundColor.includes('loginBackgroundColor')
+                    ) {
+                        // apply image and background color to the whole page as fast as possible
+                        body.style.backgroundColor = window.loginBackgroundColor;
+                    }
+                    if (window.loginBackgroundImage && !window.loginBackgroundImage.includes('loginBackgroundImage')) {
+                        body.style.backgroundImage = `url(${window.loginBackgroundImage})`;
+                        body.style.backgroundSize = 'cover';
+                    }
+                } else {
+                    if (window.vendorPrefix === 'HA') {
+                        body.style.backgroundColor = '#000000';
+                    } else if (
+                        window.loadingBackgroundColor &&
+                        !window.loadingBackgroundColor.includes('loadingBackgroundColor')
+                    ) {
+                        // apply image and background color to the whole page as fast as possible
+                        body.style.backgroundColor = window.loadingBackgroundColor;
+                    }
+                    if (
+                        window.loadingBackgroundImage &&
+                        !window.loadingBackgroundImage.includes('loadingBackgroundImage')
+                    ) {
+                        body.style.backgroundImage = `url(${window.loadingBackgroundImage})`;
+                        body.style.backgroundSize = 'cover';
+                    }
+                }
+            }, 0);
+
+            window.addEventListener(
+                'load',
+                function load(event) {
+                    window.removeEventListener('load', load, false);
+
+                    const isMsie = function () {
+                        const ua = window.navigator.userAgent;
+                        const msie = ua.indexOf('MSIE ');
+
+                        return msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./);
+                    };
+
+                    if (isMsie()) {
+                        const root = document.getElementById('root');
+
+                        root.classList.add('unsupported');
+
+                        root.innerHTML = 'Browser is not supported. Please use Firefox or Chrome.';
+                    }
+                },
+                false,
+            );
+        </script>
+      <script type="module" crossorigin src="./assets/mf-entry-bootstrap-0-100a2d9a.js"></script>
+      <link rel="stylesheet" crossorigin href="./assets/index-DFr9Kbtk.css">
+    <link rel="modulepreload" crossorigin href="./assets/hostInit-DtKwRyDA.js"><link rel="modulepreload" crossorigin href="./assets/index-CjM-E_Jd.js"><link rel="modulepreload" crossorigin href="./remoteEntry.js"><link rel="modulepreload" crossorigin href="./assets/_virtual_mf-localSharedImportMap___mfe_internal__iobroker_admin__mf_owner__1-CF4IrdeZ.js"><link rel="modulepreload" crossorigin href="./assets/_virtual_mf___mfe_internal__iobroker_admin__mf_owner__1__loadShare___mf_0_emotion_mf_1_react__loadShare__.js-CdDk0fbE.js"><link rel="modulepreload" crossorigin href="./assets/_virtual_mf___mfe_internal__iobroker_admin__mf_owner__1__loadShare___mf_0_emotion_mf_1_styled__loadShare__.js-C-9XLY8b.js"><link rel="modulepreload" crossorigin href="./assets/_virtual_mf___mfe_internal__iobroker_admin__mf_owner__1__loadShare___mf_0_iobroker_mf_1_dm_mf_2_gui_mf_2_components__loadShare__.js-BiXB1G8G.js"><link rel="modulepreload" crossorigin href="./assets/_virtual_mf___mfe_internal__iobroker_admin__mf_owner__1__loadShare__date_mf_2_fns__loadShare__.js-Tio5UMlq.js"><link rel="modulepreload" crossorigin href="./assets/_virtual_mf___mfe_internal__iobroker_admin__mf_owner__1__loadShare__date_mf_2_fns_mf_1_locale__loadShare__.js-Cv8snFOc.js"><link rel="modulepreload" crossorigin href="./assets/_virtual_mf___mfe_internal__iobroker_admin__mf_owner__1__loadShare__leaflet__loadShare__.js-CL31o-ci.js"><link rel="modulepreload" crossorigin href="./assets/_virtual_mf___mfe_internal__iobroker_admin__mf_owner__1__loadShare__leaflet_mf_2_geosearch__loadShare__.js-DTG_xxfJ.js"><link rel="modulepreload" crossorigin href="./assets/_virtual_mf___mfe_internal__iobroker_admin__mf_owner__1__loadShare__react_mf_2_dom_mf_1_client__loadShare__.js-CJnejZIC.js"><link rel="modulepreload" crossorigin href="./assets/_virtual_mf___mfe_internal__iobroker_admin__mf_owner__1__loadShare__semver__loadShare__.js-Bmznb9Dz.js"></head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+    </body>
+</html>

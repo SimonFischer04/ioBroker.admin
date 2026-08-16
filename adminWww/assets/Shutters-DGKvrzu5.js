@@ -1,0 +1,1 @@
+var e=``+new URL(`Shutters-HpXYtyYZ.svg`,import.meta.url).href;export{e as default};

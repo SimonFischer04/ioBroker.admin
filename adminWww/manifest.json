@@ -1,0 +1,20 @@
+{
+  "short_name": "admin",
+  "name": "ioBroker admin",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "128x128 64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "admin.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512 1024x1024 2048x2048 4096x4096"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

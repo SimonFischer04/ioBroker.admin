@@ -1,0 +1,1 @@
+var e=``+new URL(`Ground Floor-C3WGH1kZ.svg`,import.meta.url).href;export{e as default};

@@ -540,6 +540,15 @@ export function getAdminPublicPath(reverseProxy: ReverseProxyItem[] | undefined 
     return '/';
 }
 
+/** `adminHref('oauth/token')` → `/admin/oauth/token` when `window.socketPath` is `/admin/`. */
+export function adminHref(path: string): string {
+    // allow / dont modify absolute urls f.e. CustomTab href from adminTab.link
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+        return path;
+    }
+    return (window.socketPath || '/') + path.replace(/^\//, '');
+}
+
 // New util returning rewritten link (used by Intro & Instances simplified usage)
 export function applyReverseProxyToLink(
     link: string | undefined,
