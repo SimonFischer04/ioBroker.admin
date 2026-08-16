@@ -283,6 +283,22 @@ class Web {
         }
         return result.join('\n');
     }
+    /*
+        force load _socket/info.js so window.socketPath is set for adapters that do not load info.js themselves.
+        (typically tab.html and index.html (admin instance settings page) for non json-config adapters)
+     */
+    withInfoJs(url, body) {
+        if (this.publicPath === '/' || !/\.html?$/i.test(url.split('?')[0])) {
+            return body;
+        }
+        let html = typeof body === 'string' ? body : body.toString('utf8');
+        if (html.includes('_socket/info.js') || html.includes('window.socketPath')) {
+            return body;
+        }
+        const script = `<script src="${this.publicPath}_socket/info.js"></script>`;
+        html = html.includes('<head>') ? html.replace('<head>', `<head>${script}`) : script + html;
+        return html;
+    }
     getErrorRedirect(origin) {
         // LOGIN_PAGE /index.html?login
         // origin can be "?login&href=" -
@@ -909,7 +925,7 @@ class Web {
                                 res.contentType('text/javascript');
                             }
                         }
-                        res.send(buffer);
+                        res.send(this.withInfoJs(url, buffer));
                     }
                 });
             });
